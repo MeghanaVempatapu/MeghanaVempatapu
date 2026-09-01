@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meghana Vempatapu — Power Platform Developer & Technical BA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAFB;
+    --surface:#FFFFFF;
+    --border:#E4E7EB;
+    --text:#201F1E;
+    --muted:#605E5C;
+    --purple:#742774; --purple-soft:#F3E7F6;
+    --blue:#0066FF; --blue-soft:#EAF1FF;
+    --yellow:#C99400; --yellow-bg:#F2C811; --yellow-soft:#FBF3D9;
+    --teal:#038387; --teal-soft:#E1F3F3;
+    --green:#107C41; --green-soft:#E6F4EA;
+    --pink:#D6127B; --pink-soft:#FBE5F1;
+    --orange:#C2410C; --orange-soft:#FBEAE0;
+    --slate:#334155; --slate-soft:#EAEDF2;
+    --radius:10px;
+    --shadow-sm:0 1px 2px rgba(32,31,30,.06), 0 1px 1px rgba(32,31,30,.04);
+    --shadow-md:0 8px 24px rgba(32,31,30,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .display{font-family:'Lexend',sans-serif;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  /* top bar */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(250,250,251,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .topbar-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px;max-width:1080px;margin:0 auto;
+  }
+  .brandmark{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;}
+  .brand-tiles{display:grid;grid-template-columns:repeat(2,7px);grid-template-rows:repeat(2,7px);gap:2px;}
+  .brand-tiles span{border-radius:1.5px;}
+  .brand-tiles span:nth-child(1){background:var(--purple);}
+  .brand-tiles span:nth-child(2){background:var(--blue);}
+  .brand-tiles span:nth-child(3){background:var(--yellow-bg);}
+  .brand-tiles span:nth-child(4){background:var(--teal);}
+  .topnav{display:flex;gap:28px;font-size:13.5px;color:var(--muted);}
+  .topnav a:hover{color:var(--text);}
+
+  /* hero */
+  header.hero{
+    padding:80px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--purple);font-weight:600;
+    background:var(--purple-soft);
+    padding:6px 14px;border-radius:999px;
+    margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(32px,4vw,46px);
+    font-weight:700;line-height:1.14;letter-spacing:-.01em;
+    margin-bottom:16px;
+  }
+  h1 .role{
+    display:block;color:var(--muted);font-weight:500;
+    font-size:.46em;margin-top:10px;font-family:'Inter',sans-serif;
+  }
+  .lede{max-width:52ch;color:var(--muted);font-size:16.5px;margin-bottom:28px;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:999px;
+    font-size:14px;font-weight:600;
+    border:1px solid var(--border);
+    background:var(--surface);
+    box-shadow:var(--shadow-sm);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);}
+  .btn.primary{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;border:none;}
+
+  /* hero tile grid decoration */
+  .tile-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+  }
+  .htile{
+    aspect-ratio:1;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow-sm);
+  }
+  .htile svg{width:42%;height:42%;}
+  .t1{background:linear-gradient(135deg,#8f4fa8,var(--purple));}
+  .t2{background:linear-gradient(135deg,#3d8bff,var(--blue));}
+  .t3{background:linear-gradient(135deg,#ffe580,var(--yellow-bg));}
+  .t4{background:linear-gradient(135deg,#26a6a9,var(--teal));}
+  .t5{background:var(--surface);border:1px solid var(--border);}
+  .t6{background:linear-gradient(135deg,#f472c4,var(--pink));}
+
+  section{padding:76px 0;}
+  .section-head{margin-bottom:38px;}
+  .section-head .tag-label{
+    font-size:12.5px;font-weight:600;color:var(--muted);
+    text-transform:none;letter-spacing:.01em;margin-bottom:8px;display:block;
+  }
+  h2{font-size:26px;font-weight:700;letter-spacing:-.01em;}
+  .section-sub{color:var(--muted);font-size:15px;margin-top:8px;max-width:60ch;}
+
+  /* impact */
+  .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .impact-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);
+  }
+  .impact-num{font-family:'Lexend',sans-serif;font-size:32px;font-weight:700;margin-bottom:8px;}
+  .impact-card:nth-child(1) .impact-num{color:var(--purple);}
+  .impact-card:nth-child(2) .impact-num{color:var(--blue);}
+  .impact-card:nth-child(3) .impact-num{color:var(--yellow);}
+  .impact-card:nth-child(4) .impact-num{color:var(--teal);}
+  .impact-label{color:var(--muted);font-size:13.5px;}
+
+  /* timeline */
+  .tl-item{
+    display:grid;grid-template-columns:150px 1fr;gap:28px;
+    padding:28px;margin-bottom:16px;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);box-shadow:var(--shadow-sm);
+  }
+  .tl-date{font-size:13px;color:var(--muted);font-weight:600;padding-top:2px;}
+  .tl-role{font-family:'Lexend',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px;}
+  .tl-org{color:var(--muted);font-size:14px;margin-bottom:14px;}
+  .tl-org .sep{color:var(--border);margin:0 8px;}
+  .tl-desc{font-size:14.5px;color:var(--text);opacity:.85;max-width:64ch;margin-bottom:14px;}
+  .tl-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;max-width:66ch;margin-bottom:16px;}
+  .tl-bullets li{position:relative;padding-left:18px;font-size:14px;color:var(--muted);}
+  .tl-bullets li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--blue);}
+  .tl-stack{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{font-size:11.5px;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:4px 10px;border-radius:999px;}
+
+  /* skill tiles */
+  .app-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .app-tile{
+    border-radius:14px;padding:20px;color:#fff;
+    display:flex;flex-direction:column;gap:28px;
+    box-shadow:var(--shadow-sm);
+    min-height:110px;justify-content:space-between;
+    transition:transform .15s ease;
+  }
+  .app-tile:hover{transform:translateY(-2px);}
+  .app-tile svg{width:26px;height:26px;}
+  .app-tile span{font-weight:600;font-size:14px;}
+  .at1{background:linear-gradient(135deg,#8f4fa8,var(--purple));}
+  .at2{background:linear-gradient(135deg,#3d8bff,var(--blue));}
+  .at3{background:linear-gradient(135deg,#f6d95b,#d9a441);color:#3a2a00;}
+  .at4{background:linear-gradient(135deg,#26a6a9,var(--teal));}
+  .at5{background:linear-gradient(135deg,#1e88b8,#0f6cbd);}
+  .at6{background:linear-gradient(135deg,#4a4a68,#2d2d44);}
+  .at7{background:linear-gradient(135deg,#f472c4,var(--pink));}
+  .at8{background:linear-gradient(135deg,#5cb87a,var(--green));}
+
+  /* off the clock / personal */
+  .personal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .p-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:22px 18px;
+    box-shadow:var(--shadow-sm);text-align:left;
+  }
+  .p-icon{
+    width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .p-icon svg{width:22px;height:22px;}
+  .p-card h4{font-family:'Lexend',sans-serif;font-size:14.5px;font-weight:600;margin-bottom:6px;}
+  .p-card p{font-size:13px;color:var(--muted);}
+  .p1 .p-icon{background:var(--purple-soft);color:var(--purple);}
+  .p2 .p-icon{background:var(--teal-soft);color:var(--teal);}
+  .p3 .p-icon{background:var(--pink-soft);color:var(--pink);}
+  .p4 .p-icon{background:var(--green-soft);color:var(--green);}
+  .p5 .p-icon{background:var(--blue-soft);color:var(--blue);}
+  .p6 .p-icon{background:var(--pink-soft);color:var(--pink);}
+  .p7 .p-icon{background:var(--orange-soft);color:var(--orange);}
+  .p8 .p-icon{background:var(--slate-soft);color:var(--slate);}
+  .p9 .p-icon{background:var(--green-soft);color:var(--green);}
+
+  /* education */
+  .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .edu-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow-sm);
+  }
+  .edu-kicker{font-size:12px;font-weight:600;color:var(--blue);margin-bottom:8px;}
+  .edu-title{font-family:'Lexend',sans-serif;font-size:16px;font-weight:600;margin-bottom:4px;}
+  .edu-sub{color:var(--muted);font-size:13.5px;}
+
+  footer{
+    padding:64px 0 48px;
+    background:linear-gradient(135deg,var(--purple) 0%, var(--blue) 100%);
+    color:#fff;margin-top:20px;border-radius:20px 20px 0 0;
+  }
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+  .foot-left h2{color:#fff;margin-bottom:12px;}
+  .foot-left p{color:rgba(255,255,255,.85);max-width:44ch;font-size:15px;}
+  .foot-links{display:flex;flex-direction:column;gap:10px;font-size:14px;}
+  .foot-links a{color:#fff;font-weight:600;}
+  .foot-bottom{
+    margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.25);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:12px;color:rgba(255,255,255,.75);
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .impact-grid{grid-template-columns:repeat(2,1fr);}
+    .app-tiles{grid-template-columns:repeat(2,1fr);}
+    .personal-grid{grid-template-columns:repeat(2,1fr);}
+    .edu-grid{grid-template-columns:1fr;}
+    .tl-item{grid-template-columns:1fr;gap:6px;}
+    .topnav{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brandmark">
+      <div class="brand-tiles"><span></span><span></span><span></span><span></span></div>
+      Meghana Vempatapu
+    </div>
+    <nav class="topnav">
+      <a href="#experience">Experience</a>
+      <a href="#skills">Platform</a>
+      <a href="#personal">Off the clock</a>
+      <a href="#education">Education</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">New York, NY · Open to remote &amp; hybrid</div>
+      <h1>Meghana Vempatapu
+        <span class="role">Power Platform Developer &amp; Technical Business Analyst</span>
+      </h1>
+      <p class="lede">I live in the Microsoft Power Platform stack — turning messy field operations and business asks into Power Apps, Power Automate flows, and Dataverse solutions that people actually enjoy using.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:vempa.meghana@gmail.com">Email me</a>
+        <a class="btn" href="tel:+14122921395">(412) 292-1395</a>
+        <a class="btn" href="#experience">See the work ↓</a>
+      </div>
+    </div>
+    <div class="tile-grid">
+      <div class="htile t1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+      <div class="htile t2"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 12h6l2-4 3 8 2-4h3"/></svg></div>
+      <div class="htile t3"><svg viewBox="0 0 24 24" fill="none" stroke="#3a2a00" stroke-width="1.8"><path d="M4 18v-5l6-3 6 3 4-2v7"/><path d="M4 18h16"/></svg></div>
+      <div class="htile t5"><span class="display" style="font-weight:700;color:var(--purple);font-size:22px;">5+</span></div>
+      <div class="htile t4"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+      <div class="htile t6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3v18M6 8l6-5 6 5M6 16l6 5 6-5"/></svg></div>
+    </div>
+  </div>
+</header>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag-label">Results</span>
+      <h2>Where the work has landed</h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-num display">50%</div>
+        <div class="impact-label">drop in manual operations across 10+ custom Power Apps at Unilever</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num display">40%</div>
+        <div class="impact-label">faster approvals and notifications via Power Automate</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num display">5</div>
+        <div class="impact-label">NYC boroughs running on the Urban Park Service tracking platform</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num display">5+</div>
+        <div class="impact-label">years shipping Power Platform solutions end to end</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag-label">2019 — present</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">MAY 2024<br>— PRESENT</div>
+      <div>
+        <div class="tl-role display">Technical Business Analyst</div>
+        <div class="tl-org">NYC Dept. of Parks &amp; Recreation — Urban Park Service<span class="sep">/</span>via Spruce Technology</div>
+        <p class="tl-desc">Led requirements and solution design for the UPS Tracking System, replacing paper-based patrol, summons, and incident reporting with a mobile, offline-capable Dynamics 365 platform across all five boroughs.</p>
+        <ul class="tl-bullets">
+          <li>Ran stakeholder workshops with officers, supervisors, and central admin to capture mobile-first, compliance-driven requirements</li>
+          <li>Designed role-based security, approval hierarchies, and validation rules for audit-ready data</li>
+          <li>Led migration of legacy paper processes into Dataverse, then owned UAT, defect tracking, and training</li>
+        </ul>
+        <div class="tl-stack">
+          <span class="tag">Power Apps</span><span class="tag">Dataverse</span><span class="tag">Power Automate</span><span class="tag">Tableau</span><span class="tag">ArcGIS</span><span class="tag">Azure DevOps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">JUN 2023<br>— JAN 2025</div>
+      <div>
+        <div class="tl-role display">Technical Business Analyst</div>
+        <div class="tl-org">GreenMan<span class="sep">/</span>Remote, USA</div>
+        <p class="tl-desc">Delivered the Vendor Forecast Intelligence Dashboard, pairing predictive Power BI reporting with Power Automate workflows for quarterly financial planning.</p>
+        <ul class="tl-bullets">
+          <li>Ran JAD sessions to define financial forecasting and approval workflows end to end</li>
+          <li>Built Power BI dashboards with DAX and dynamic filtering for vendor trends and forecasts</li>
+          <li>Migrated and cleansed legacy vendor data into Dataverse ahead of go-live</li>
+        </ul>
+        <div class="tl-stack">
+          <span class="tag">Power Apps</span><span class="tag">Power Automate</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">SharePoint</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">JAN 2021<br>— MAY 2023</div>
+      <div>
+        <div class="tl-role display">Technical Business Analyst</div>
+        <div class="tl-org">Unilever<span class="sep">/</span>Hyderabad, India — Project Type C</div>
+        <p class="tl-desc">Built and rolled out 10+ custom Power Apps and connected automation to cut manual work and speed up approvals.</p>
+        <ul class="tl-bullets">
+          <li>Delivered custom Power Apps that cut manual operations by 50%</li>
+          <li>Built Power Automate approval flows that reduced response times by 40%</li>
+          <li>Integrated Power Platform apps with SharePoint, SQL Server, and Microsoft Graph API</li>
+        </ul>
+        <div class="tl-stack">
+          <span class="tag">Power Apps</span><span class="tag">Power Automate</span><span class="tag">SharePoint</span><span class="tag">SQL Server</span><span class="tag">Graph API</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">MAY 2019<br>— OCT 2020</div>
+      <div>
+        <div class="tl-role display">Business Analyst</div>
+        <div class="tl-org">Unilever<span class="sep">/</span>Hyderabad, India — Swift Track CRM Modernization</div>
+        <p class="tl-desc">Modernized Swift Haul Logistics' CRM using Model-Driven Power Apps, replacing manual processes with automated, data-backed workflows.</p>
+        <ul class="tl-bullets">
+          <li>Configured Model-Driven Power Apps for day-to-day CRM operations</li>
+          <li>Built Power BI dashboards turning operational data into decision-ready insights</li>
+          <li>Deployed Power Virtual Agents chatbots to automate customer service support</li>
+        </ul>
+        <div class="tl-stack">
+          <span class="tag">Power Apps</span><span class="tag">Power Automate</span><span class="tag">Power BI</span><span class="tag">Power Virtual Agents</span><span class="tag">Dynamics</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag-label">The stack</span>
+      <h2>My niche, tile by tile</h2>
+      <p class="section-sub">Requirements gathering on one end, a working Power Platform solution on the other.</p>
+    </div>
+    <div class="app-tiles">
+      <div class="app-tile at1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Power Apps</span></div>
+      <div class="app-tile at2"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 12h6l2-4 3 8 2-4h3"/></svg><span>Power Automate</span></div>
+      <div class="app-tile at3"><svg viewBox="0 0 24 24" fill="none" stroke="#3a2a00" stroke-width="1.8"><path d="M4 18v-5l6-3 6 3 4-2v7"/><path d="M4 18h16"/></svg><span>Power BI</span></div>
+      <div class="app-tile at7"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><path d="M4 20c0-3 2-5 5-5s5 2 5 5"/><path d="M15 8h5M15 12h5"/></svg><span>Power Virtual Agents</span></div>
+      <div class="app-tile at5"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg><span>Dataverse</span></div>
+      <div class="app-tile at4"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg><span>Dynamics 365 CE</span></div>
+      <div class="app-tile at6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>SharePoint &amp; SQL</span></div>
+      <div class="app-tile at8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3v18M12 3c-3 2-5 5-5 9s2 7 5 9M12 3c3 2 5 5 5 9s-2 7-5 9"/></svg><span>Azure &amp; REST APIs</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="personal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag-label">Off the clock</span>
+      <h2>When I'm not shipping a flow</h2>
+      <p class="section-sub">The same curiosity that goes into a requirements workshop shows up on weekends too.</p>
+    </div>
+    <div class="personal-grid">
+      <div class="p-card p1">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v2M11 3v2M14 3v2"/></svg></div>
+        <h4>Coffee shop hopping</h4>
+        <p>Scoping out a new spot every weekend, one flat white at a time.</p>
+      </div>
+      <div class="p-card p2">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5Z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5Z"/></svg></div>
+        <h4>Reading</h4>
+        <p>Always mid-way through something — fiction on weekends, non-fiction for the commute.</p>
+      </div>
+      <div class="p-card p3">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><path d="M9 7l1.5-4h3L15 7"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="13" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <h4>Art &amp; craft</h4>
+        <p>Hands-on projects to balance out a screen-heavy week.</p>
+      </div>
+      <div class="p-card p4">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21v-8"/><path d="M12 13c-4 0-6-2.5-6-6 4 0 6 2 6 6Z"/><path d="M12 13c4 0 6-2.5 6-6-4 0-6 2-6 6Z"/><path d="M8 21h8"/></svg></div>
+        <h4>Plant mom</h4>
+        <p>Running a small indoor jungle, mostly by trial and error.</p>
+      </div>
+      <div class="p-card p5">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="12" r="3.5"/><circle cx="17" cy="12" r="3.5"/><path d="M10.5 12h3"/></svg></div>
+        <h4>People-watching in NYC</h4>
+        <p>Favorite Sunday activity: a park bench and no agenda.</p>
+      </div>
+      <div class="p-card p6">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="17.5" cy="10" r="0.6" fill="currentColor" stroke="none"/></svg></div>
+        <h4>Cute photo booths</h4>
+        <p>Always on the hunt for the next strip of four tiny photos.</p>
+      </div>
+      <div class="p-card p7">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16h16"/><path d="M6 16a6 6 0 0 1 12 0"/><path d="M12 6v3M6.5 8.5l1.8 1.8M17.5 8.5l-1.8 1.8"/><path d="M2 20h20"/></svg></div>
+        <h4>Sunset chaser</h4>
+        <p>Will pause whatever I'm doing for a good one.</p>
+      </div>
+      <div class="p-card p8">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20V10l3-2v12"/><path d="M9 20V6l4-3 4 3v14"/><path d="M17 20V9l4 2v9"/><path d="M2 20h20"/><path d="M11 9h2M11 12h2M11 15h2"/></svg></div>
+        <h4>Skyline collector</h4>
+        <p>Chasing the same skyline from a new rooftop, bridge, or borough.</p>
+      </div>
+      <div class="p-card p9">
+        <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20l6-11 4 6 2-3 6 8Z"/><circle cx="17" cy="5" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <h4>Trekking</h4>
+        <p>Trading the desk for a trail whenever I get the chance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag-label">Background</span>
+      <h2>Education &amp; certification</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-kicker">MASTER'S DEGREE · 2023 – 2024</div>
+        <div class="edu-title display">Information Systems and Management</div>
+        <div class="edu-sub">Robert Morris University · Global Ambassador</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-kicker">BACHELOR'S DEGREE · 2016 – 2020</div>
+        <div class="edu-title display">Electrical Engineering</div>
+        <div class="edu-sub">JNTU Hyderabad</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-kicker">CERTIFICATION · 2024</div>
+        <div class="edu-title display">Power Platform Developer Associate (PL-400)</div>
+        <div class="edu-sub">Microsoft Certified</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-kicker">RECOGNITION</div>
+        <div class="edu-title display">Best Employee</div>
+        <div class="edu-sub">Covalense Global Technologies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<footer>
+  <div class="wrap" style="padding:0 32px;">
+    <div class="foot-grid">
+      <div class="foot-left">
+        <h2 class="display">Let's build the next flow.</h2>
+        <p>Available for Power Platform development and technical business analyst roles — remote, hybrid, or on-site in the NYC area.</p>
+      </div>
+      <div class="foot-links">
+        <a href="mailto:vempa.meghana@gmail.com">vempa.meghana@gmail.com</a>
+        <span style="opacity:.85;font-weight:400;">New York, NY</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>MEGHANA VEMPATAPU</span>
+      <span>POWER PLATFORM DEVELOPER · TECHNICAL BUSINESS ANALYST</span>
+    </div>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>
